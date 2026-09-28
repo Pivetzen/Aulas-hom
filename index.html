@@ -43,7 +43,7 @@
             flex: 1;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            padding: 1rem;
+            padding: 0.75rem;
         }
 
         @media (min-width: 768px) {
@@ -149,64 +149,68 @@
         <!-- ÁREA PRINCIPAL COM ROLAGEM INDEPENDENTE -->
         <div class="main-content">
             <div class="max-w-5xl mx-auto">
-                <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4 bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-200">
                     <div>
-                        <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">Portal de Reforço</h1>
-                        <p class="text-slate-500 text-sm font-medium">Gestão Pedagógica e Financeira</p>
+                        <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 tracking-tight">Portal de Reforço</h1>
+                        <p class="text-slate-500 text-xs md:text-sm font-medium">Gestão Pedagógica e Financeira</p>
                     </div>
-                    <div class="flex items-center bg-slate-50 px-4 py-2 rounded-xl border border-slate-200">
-                        <label class="mr-3 font-semibold text-slate-600 uppercase text-[10px] tracking-wider">Aluno:</label>
-                        <select id="select-aluno" onchange="renderizarDados()" class="bg-transparent border-none focus:ring-0 text-blue-600 font-bold cursor-pointer text-lg outline-none">
+                    <div class="flex items-center bg-slate-50 px-3 py-2 rounded-xl border border-slate-200">
+                        <label class="mr-2 font-semibold text-slate-600 uppercase text-[10px] tracking-wider">Aluno:</label>
+                        <select id="select-aluno" onchange="renderizarDados()" class="bg-transparent border-none focus:ring-0 text-blue-600 font-bold cursor-pointer text-base md:text-lg outline-none w-full">
                             <option value="">Carregando...</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-1">
-                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 h-full">
-                            <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center"><span class="w-2 h-6 bg-blue-500 rounded mr-2"></span>Evolução</h2>
-                            <div id="container-progresso" class="space-y-6"></div>
+                        <div class="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-200 h-full">
+                            <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-4 flex items-center"><span class="w-2 h-5 bg-blue-500 rounded mr-2"></span>Evolução</h2>
+                            <div id="container-progresso" class="space-y-4 md:space-y-6"></div>
                         </div>
                     </div>
 
                     <div class="lg:col-span-2">
-                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
-                                <h2 class="text-xl font-bold text-gray-800 flex items-center"><span class="w-2 h-6 bg-green-500 rounded mr-2"></span>Histórico de Aulas</h2>
+                        <!-- Ajuste do padding de p-6 para p-3 sm:p-6 para aproveitar 100% da largura em telas pequenas -->
+                        <div class="bg-white p-3 sm:p-6 rounded-2xl shadow-sm border border-gray-200">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-6 gap-3">
+                                <h2 class="text-lg md:text-xl font-bold text-gray-800 flex items-center"><span class="w-2 h-5 bg-green-500 rounded mr-2"></span>Histórico de Aulas</h2>
                                 
-                                <div class="flex items-center gap-4 flex-wrap">
-                                    <label class="flex items-center cursor-pointer select-none text-sm">
-                                        <span class="mr-3 font-bold text-slate-600">Apenas Pendentes</span>
+                                <div class="flex items-center gap-3 flex-wrap justify-between sm:justify-end">
+                                    <label class="flex items-center cursor-pointer select-none text-xs sm:text-sm">
+                                        <span class="mr-2 font-bold text-slate-600">Apenas Pendentes</span>
                                         <div class="relative">
                                             <input type="checkbox" id="check-pendentes" onchange="renderizarDados()" class="sr-only">
-                                            <div class="block bg-gray-200 w-10 h-6 rounded-full border border-gray-300"></div>
-                                            <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full shadow"></div>
+                                            <div class="block bg-gray-200 w-9 h-5 rounded-full border border-gray-300"></div>
+                                            <div class="dot absolute left-0.5 top-0.5 bg-white w-4 h-4 rounded-full shadow"></div>
                                         </div>
                                     </label>
 
-                                    <div class="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5">
-                                        <span class="text-slate-400 text-xs font-bold mr-1">R$</span>
-                                        <input type="number" id="valor-hora" placeholder="Valor/h" min="0" step="0.01" class="bg-transparent text-xs font-bold text-slate-700 w-16 outline-none border-none p-0 focus:ring-0" />
-                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <div class="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5">
+                                            <span class="text-slate-400 text-xs font-bold mr-1">R$</span>
+                                            <input type="number" id="valor-hora" placeholder="Valor/h" min="0" step="0.01" class="bg-transparent text-xs font-bold text-slate-700 w-14 outline-none border-none p-0 focus:ring-0" />
+                                        </div>
 
-                                    <button onclick="gerarPDF()" class="bg-red-500 hover:bg-red-600 text-white font-bold text-xs uppercase tracking-wider px-4 py-2 rounded-xl shadow-sm transition-all flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                        </svg>
-                                        PDF Pendentes
-                                    </button>
+                                        <button onclick="gerarPDF()" class="bg-red-500 hover:bg-red-600 text-white font-bold text-[10px] sm:text-xs uppercase tracking-wider px-3 py-2 rounded-xl shadow-sm transition-all flex items-center gap-1.5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                            PDF
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left text-sm text-slate-600">
+                            <!-- Tabela ajustada para largura total sem scroll lateral -->
+                            <div class="w-full">
+                                <table class="w-full text-left text-xs sm:text-sm text-slate-600 table-fixed">
                                     <thead>
-                                        <tr class="text-slate-400 uppercase text-[10px] tracking-widest border-b border-slate-100">
-                                            <th class="py-4 px-2">Data</th>
-                                            <th class="py-4 px-2">Conteúdo</th>
-                                            <th class="py-4 px-2 text-center">Horas</th>
-                                            <th class="py-4 px-2 text-right">Status</th>
+                                        <tr class="text-slate-400 uppercase text-[9px] sm:text-[10px] tracking-wider border-b border-slate-100">
+                                            <th class="py-3 px-1 w-[22%] sm:w-[20%]">Data</th>
+                                            <th class="py-3 px-1 w-[48%] sm:w-[50%]">Conteúdo</th>
+                                            <th class="py-3 px-1 text-center w-[12%] sm:w-[15%]">Horas</th>
+                                            <th class="py-3 px-1 text-right w-[18%] sm:w-[15%]">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tabela-aulas" class="divide-y divide-slate-50"></tbody>
@@ -315,7 +319,7 @@
                 if (i.tipo === 'Progresso') {
                     const p = parseInt(i.valor) || 0;
                     cProgresso.innerHTML += `<div>
-                        <div class="flex justify-between text-xs mb-2 font-bold text-slate-700"><span>${i.conteudo}</span><span>${p}%</span></div>
+                        <div class="flex justify-between text-xs mb-1.5 font-bold text-slate-700"><span>${i.conteudo}</span><span>${p}%</span></div>
                         <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
                             <div class="bg-blue-500 h-2.5 rounded-full progress-bar" style="width:${p}%"></div>
                         </div>
@@ -324,11 +328,11 @@
                     if (apenasPendentes && i.pago) return;
 
                     tAulas.innerHTML += `<tr class="hover:bg-slate-50 transition-colors">
-                        <td class="py-4 px-2 text-slate-400 font-medium">${i.valor}</td>
-                        <td class="py-4 px-2 font-semibold text-slate-800">${i.conteudo}</td>
-                        <td class="py-4 px-2 text-center font-bold text-slate-500">${i.extra}h</td>
-                        <td class="py-4 px-2 text-right">
-                            <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${i.pago ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+                        <td class="py-3 px-1 text-slate-400 font-medium whitespace-nowrap text-[11px] sm:text-xs">${i.valor}</td>
+                        <td class="py-3 px-1 font-semibold text-slate-800 break-words leading-tight text-xs sm:text-sm">${i.conteudo}</td>
+                        <td class="py-3 px-1 text-center font-bold text-slate-500 whitespace-nowrap text-xs">${i.extra}h</td>
+                        <td class="py-3 px-1 text-right whitespace-nowrap">
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-tight ${i.pago ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
                                 ${i.pago ? 'Pago' : 'Pendente'}
                             </span>
                         </td>
